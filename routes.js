@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { caminhaoCreate, caminhaoIndex } from "./controllers/caminhaoController"
+import { caminhaoCreate, caminhaoIndex, caminhaoDelete } from "./controllers/caminhaoController"
 import { usuarioIndex, usuarioCreate, usuarioTrocaSenha } from "./controllers/usuarioController.js"
 import { loginUsuario } from "./controllers/loginController.js"
 import { verificaLogin } from "./middlewares/verificaLogin.js"
