@@ -2,7 +2,7 @@
 
 Trabalho #3 de Desenvolvimento de APIs - Entrega: 08/12/23
 
-### Instalações:
+### Instalações e p/ rodar:
 
 1. `` npm init -y `` 
 2. ``npm i express sequelize mysql2 cors `` 
