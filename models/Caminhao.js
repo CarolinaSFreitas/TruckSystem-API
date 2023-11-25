@@ -26,13 +26,14 @@ export const Caminhao = sequelize.define('caminhao', { // nome da tabela
         allowNull: false
     },
 }, {
+    tableName: 'caminhao',
     timestamps: false
 });
 
 // relacionamento:
 Caminhao.belongsTo(Usuario, {
     foreignKey: {
-        name: 'caminhao_id',
+        name: 'usuario_id',
         allowNull: false,
         unique: true,
     },

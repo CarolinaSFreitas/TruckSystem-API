@@ -17,6 +17,6 @@ export const log = sequelize.define('log', {
     },
 }, {
     timestamps: true,
-    updatedAt: false
+    updatedAt: false,
 });
 

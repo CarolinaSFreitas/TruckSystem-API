@@ -1,6 +1,7 @@
+import bcrypt from 'bcrypt'
+
 import { DataTypes } from "sequelize";
 import { sequelize } from '../database/conecta.js'
-import { Caminhao } from "../models/Caminhao.js";
 
 export const Usuario = sequelize.define('usuario', { // nome da tabela
     // Model attributes are defined here
@@ -15,6 +16,10 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
     },
     email: {
         type: DataTypes.STRING(24),
+        allowNull: false
+    },
+    senha: {
+        type: DataTypes.STRING(60),
         allowNull: false
     },
     telefone: {
@@ -34,8 +39,22 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
         allowNull: false
     },
 }, {
+    tableName: 'usuario',
     // timestamps: false
     paranoid: true
 });
 
-//relacionamento 
+// hook (gancho) do Sequelize que é executado antes da inserção
+// de um registro. Faz a criptografia da senha
+// e atribui o hash ao campo senha
+Usuario.beforeCreate(usuario => {
+    const salt = bcrypt.genSaltSync(12)
+    const hash = bcrypt.hashSync(usuario.senha, salt)
+    usuario.senha = hash
+})
+
+Usuario.beforeUpdate(usuario => {
+    const salt = bcrypt.genSaltSync(12)
+    const hash = bcrypt.hashSync(usuario.senha, salt)
+    usuario.senha = hash
+})

@@ -53,9 +53,9 @@ function validaSenha(senha) {
 
 // função de create - vai criar um novo registro no insomnia
 export async function usuarioCreate(req, res) {
-    const { nome, email, senha } = req.body
+    const { nomeMotorista, email, senha, telefone, rgOuCpf, registroCNH, nascimento } = req.body
 
-    if (!nome || !email || !senha) {
+    if (!nomeMotorista || !email || !senha|| !telefone || !rgOuCpf || !registroCNH || !nascimento) {
         res.status(400).json("Erro... Informe nome, email e senha.")
         return
     }
@@ -68,7 +68,7 @@ export async function usuarioCreate(req, res) {
 
     try {
         const usuario = await Usuario.create({
-            nome, email, senha
+            nomeMotorista, email, senha, telefone, rgOuCpf, registroCNH, nascimento
         })
         res.status(201).json(usuario)
     } catch (error) {

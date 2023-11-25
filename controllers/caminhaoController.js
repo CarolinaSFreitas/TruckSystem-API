@@ -4,7 +4,6 @@ import { Usuario } from "../models/Usuario.js"
 import { Caminhao } from "../models/Caminhao.js"
 import { Op, Sequelize } from 'sequelize';
 
-
 //função de get - vai listar os vinhos no insomnia
 export async function caminhaoIndex(req, res) {
     try {

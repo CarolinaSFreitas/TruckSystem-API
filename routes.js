@@ -9,15 +9,15 @@ const router = Router()
 
 // --------------------------------------------------------- ROTAS DE caminhoes
 router.get("/caminhoes", caminhaoIndex) //rota pra listagem
-      .post("/caminhoes", caminhaoCreate) //rota pra criação de registro
-      .delete("/caminhoes", verificaLogin, caminhaoDelete)
+      .post("/caminhao", caminhaoCreate) //rota pra criação de registro
+      .delete("/caminhao/:id", verificaLogin, caminhaoDelete)
 
       
 // --------------------------------------------------------- ROTAS DE USUARIOS
 router.get("/usuarios", usuarioIndex) //rota pra listagem de usuarios
-      .post("/usuarios", usuarioCreate) //rota pra criação de registro
-      .get("/usuarios/solicitatroca", enviaEmail)           //faz a solicitação de mudança de senha
-      .patch("/usuarios/trocasenha/:hash", usuarioTrocaSenha)                   //realiza a troca de senha
+      .post("/usuario", usuarioCreate) //rota pra criação de registro
+      .get("/usuario/solicitatroca", enviaEmail)           //faz a solicitação de mudança de senha
+      .patch("/usuario/trocasenha/:hash", usuarioTrocaSenha)                   //realiza a troca de senha
 
 
 // --------------------------------------------------------- ROTAS DE LOGIN

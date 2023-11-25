@@ -17,5 +17,6 @@ export const Troca = sequelize.define('troca', {
     },
 }, {
     timestamps: true,
-    updatedAt: false
+    updatedAt: false,
+    tableName: 'troca'
 });
