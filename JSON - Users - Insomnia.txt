@@ -1,0 +1,104 @@
+JSON Insomnia:
+
+Json do "criar usuários/motoristas":
+
+{
+  "nomeMotorista": "Heitor Adamastor",
+  "email": "heimastor@gmail.com",
+  "senha": "Joca81!!",
+  "telefone": 999967892,
+  "rgOuCpf": "40258722578",
+  "registroCNH": 987654321,
+  "nascimento": "1981-01-05"
+}
+
+{
+  "nomeMotorista": "Heitor Adamastor",
+  "email": "heimastor@gmail.com",
+  "senha": "HeiAda67!!",
+  "telefone": 981454642,
+  "rgOuCpf": "895241685411",
+  "registroCNH": 337156368,
+  "nascimento": "1967-08-11"
+}
+
+{
+  "nomeMotorista": "Daniel Silveira",
+  "email": "danisilv@gmail.com",
+  "senha": "Danipele88!!",
+  "telefone": 984851204,
+  "rgOuCpf": "1112536486",
+  "registroCNH": 307655312,
+  "nascimento": "1992-12-12"
+}
+
+{
+  "nomeMotorista": "Miguel Ribeiro",
+  "email": "miguel.ribeiro@email.com",
+  "senha": "Miguel789!!",
+  "telefone": 987654321,
+  "rgOuCpf": "90123456789",
+  "registroCNH": 3456789012,
+  "nascimento": "1998-08-05"
+}
+
+{
+"nomeMotorista": "Ana Souza",
+"email": "ana.souza@gmail.com",
+"senha": "Ana123!!",
+"telefone": 987654321,
+"rgOuCpf": "12345678901",
+"registroCNH": 987654321,
+"nascimento": "1990-05-15"
+}
+
+{
+  "nomeMotorista": "Pedro Oliveira",
+  "email": "pedro.oliveira@gmail.com",
+  "senha": "Pedro123!!",
+  "telefone": 876543210,
+  "rgOuCpf": "98765432109",
+  "registroCNH": 123456789,
+  "nascimento": "1985-10-25"
+}
+
+{
+  "nomeMotorista": "Lucas Santos",
+  "email": "lucas.santos@gmail.com",
+  "senha": "Lucas123!!",
+  "telefone": 654321098,
+  "rgOuCpf": "34567890123",
+  "registroCNH": 678901234,
+  "nascimento": "1993-07-18"
+}
+
+{
+  "nomeMotorista": "Gustavo Costa",
+  "email": "gustavo.costa@gmail.com",
+  "senha": "Gustavo456!!",
+  "telefone": 432109876,
+  "rgOuCpf": "56789012345",
+  "registroCNH": 890123456,
+  "nascimento": "1995-09-10"
+}
+
+{
+  "nomeMotorista": "Mariana Mendonça",
+  "email": "mariana.mendonca@gmail.com",
+  "senha": "Mariana123!!",
+  "telefone": 210987654,
+  "rgOuCpf": "78901234567",
+  "registroCNH": 123456789,
+  "nascimento": "1992-04-20"
+}
+
+{
+"nomeMotorista": "Juliano Almeida",
+"email": "juliano.almeida@gmail.com",
+"senha": "Juliano456!!",
+"telefone": 109876543,
+"rgOuCpf": "89012345678",
+"registroCNH": 234567890,
+"nascimento": "1983-06-30"
+}
+
