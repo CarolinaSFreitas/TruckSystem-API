@@ -15,7 +15,7 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
         allowNull: false
     },
     email: {
-        type: DataTypes.STRING(24),
+        type: DataTypes.STRING(50),
         allowNull: false
     },
     senha: {
@@ -40,7 +40,7 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
     },
 }, {
     tableName: 'usuario',
-    // timestamps: false
+    timestamps: false,
     paranoid: true
 });
 

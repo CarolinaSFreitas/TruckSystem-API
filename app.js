@@ -21,16 +21,16 @@ async function conecta_db() {
     await sequelize.authenticate();
     console.log('Conexão bem sucedida.');
 
-    await Caminhao.sync({ alter: true })
+    await Caminhao.sync()
     console.log("Tabela de Caminhões: Ok!")
 
-    await Usuario.sync({ alter: true })
+    await Usuario.sync()
     console.log("Tabela de Usuários Motoristas: Ok!")
 
-    await log.sync({ alter: true })
+    await log.sync()
     console.log("Tabela de Logs: Ok")
 
-    await Troca.sync({ alter: true })
+    await Troca.sync()
     console.log("Tabela de Solicitações de Troca de Senhas: Ok")
 
     await sequelize.authenticate();
