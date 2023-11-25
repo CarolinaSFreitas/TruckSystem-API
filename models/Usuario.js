@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from '../database/conecta.js'
-import { Caminhao } from "./Caminhao.js";
+import { Caminhao } from "../models/Caminhao.js";
 
 export const Usuario = sequelize.define('usuario', { // nome da tabela
     // Model attributes are defined here
@@ -38,6 +38,4 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
     paranoid: true
 });
 
-// após construir a tabela do model, os relacionamentos são feitos fora:
-Motorista.hasOne(Caminhao); // Um motorista possui um caminhão
-
+//relacionamento 

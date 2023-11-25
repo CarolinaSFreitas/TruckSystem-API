@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 
 export const sequelize = new Sequelize(
-  'trucksystem-carol', 'root', 'senacrs', {
+  'trucksystem_carol', 'root', 'theo', {
   host: 'localhost',
   dialect: 'mysql',
   port: 3306

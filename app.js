@@ -21,10 +21,11 @@ async function conecta_db() {
     await sequelize.authenticate();
     console.log('Conexão bem sucedida.');
 
-    await Usuario.sync()          
-
     await Caminhao.sync()          
     console.log("Tabela de Caminhões: Ok!")
+
+    await Usuario.sync()          
+    console.log("Tabela de Usuários Motoristas: Ok!")
 
     await log.sync()
     console.log("Tabela de Logs: Ok")

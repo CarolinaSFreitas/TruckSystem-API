@@ -1,7 +1,7 @@
 {
   "name": "trab3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Trabalho #3 de Desenvolvimento de APIs - Entrega: 08/12/23",
   "main": "app.js",
   "type": "module",
   "scripts": {
