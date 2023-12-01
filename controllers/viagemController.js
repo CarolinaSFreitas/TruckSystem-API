@@ -85,7 +85,7 @@ export async function viagemUpdate(req, res) {
             descricao, tipoCarga, origem, destino, valorCarga, usuario_id, caminhao_id
         }, {
             where: { id }
-        })
+        });
 
         await log.create({
             descricao: `Alteração de Viagem id: ${id}`,

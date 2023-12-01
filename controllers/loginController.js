@@ -22,10 +22,9 @@ export async function loginUsuario(req, res) {
         const usuario = await Usuario.findOne({ where: { email } })
 
         await log.create({
-            descricao: `Tentativa de Login Inválido`,
-            complemento: `E-mail: ${email}`
+            descricao: `Tentativa de Login Inválida`,
+            complemento: `Nome: ${usuario.nomeMotorista}, E-mail: ${email}`
         })
-
         if (usuario == null) {
             res.status(400).json({ erro: mensaErroPadrao })
             return
@@ -33,7 +32,8 @@ export async function loginUsuario(req, res) {
 
         if (bcrypt.compareSync(senha, usuario.senha)) {
             const token = jwt.sign({
-                usuario_logado_id: usuario.id, usuario_logado_id: usuario.nome
+                usuario_logado_id: usuario.id,
+                usuario_logado_nome: usuario.nomeMotorista
             },
                 process.env.JWT_KEY,
                 { expiresIn: "1h" })
@@ -41,8 +41,9 @@ export async function loginUsuario(req, res) {
 
             await log.create({
                 descricao: `Tentativa de Login Bem-sucedida`,
-                complemento: `E-mail: ${email}`
+                complemento: `Nome: ${usuario.nomeMotorista}, E-mail: ${email}`
             })
+
 
             res.status(200).json({ msg: "Logado", token })
 

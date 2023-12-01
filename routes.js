@@ -19,14 +19,14 @@ router.get("/caminhoes", caminhaoIndex) //rota pra listagem
 router.get("/usuarios", usuarioIndex) //rota pra listagem de usuarios
       .post("/usuario", usuarioCreate) //rota pra criação de registro
       .get("/usuario/solicitatroca", enviaEmail)           //faz a solicitação de mudança de senha
-      .patch("/usuario/trocasenha/:hash", usuarioTrocaSenha)          //TESTAR NO INOMSNIA         //realiza a troca de senha
+      .patch("/usuario/trocasenha/:hash", usuarioTrocaSenha)           //realiza a troca de senha
 
 
 // --------------------------------------------------------- ROTAS DE viagens
 router.get("/viagens", verificaLogin, viagensIndex) //rota pra listagem
       .post("/viagem", viagemCreate) //rota pra criação de registro
       .delete("/viagem/:id", verificaLogin, viagemDelete)
-      .patch("/viagem/:id", verificaLogin, viagemUpdate) //rota de alteração de registro de viagens
+      .patch("/viagem/:id", viagemUpdate) //rota de alteração de registro de viagens
       .get('/viagens/pesquisa/:termo', viagemPesquisa); //rota para pesquisar viagens por termo
 
 
