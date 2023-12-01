@@ -21,9 +21,11 @@ export async function loginUsuario(req, res) {
     try {
         const usuario = await Usuario.findOne({ where: { email } })
 
-        await log.create({descricao: `Tentativa de Login Inválido`,
-        complemento: `E-mail: ${email}`})
-    
+        await log.create({
+            descricao: `Tentativa de Login Inválido`,
+            complemento: `E-mail: ${email}`
+        })
+
         if (usuario == null) {
             res.status(400).json({ erro: mensaErroPadrao })
             return
@@ -36,7 +38,15 @@ export async function loginUsuario(req, res) {
                 process.env.JWT_KEY,
                 { expiresIn: "1h" })
 
+
+            await log.create({
+                descricao: `Tentativa de Login Bem-sucedida`,
+                complemento: `E-mail: ${email}`
+            })
+
             res.status(200).json({ msg: "Logado", token })
+
+
         }
         else {
             res.status(400).json({ erro: mensaErroPadrao })

@@ -58,3 +58,4 @@ Usuario.beforeUpdate(usuario => {
     const hash = bcrypt.hashSync(usuario.senha, salt)
     usuario.senha = hash
 })
+

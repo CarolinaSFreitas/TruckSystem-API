@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from '../database/conecta.js'
-import { Usuario } from "../models/Usuario.js";
 
 export const Caminhao = sequelize.define('caminhao', { // nome da tabela
     // Model attributes are defined here
@@ -27,16 +26,7 @@ export const Caminhao = sequelize.define('caminhao', { // nome da tabela
     },
 }, {
     tableName: 'caminhao',
-    timestamps: false
+    timestamps: false,
+    paranoid: true
 });
 
-// relacionamento:
-Caminhao.belongsTo(Usuario, {
-    foreignKey: {
-        name: 'usuario_id',
-        allowNull: false,
-        unique: true,
-    },
-    onDelete: 'RESTRICT',
-    onUpdate: 'CASCADE'
-});

@@ -102,3 +102,56 @@ Json do "criar usuários/motoristas":
 "nascimento": "1983-06-30"
 }
 
+{
+"nomeMotorista": "Fernanda Ávila",
+"email": "avila_fernanda@gmail.com",
+"senha": "Venus&Maionese!3",
+"telefone": 999112545,
+"rgOuCpf": "40212531488",
+"registroCNH": 899666172,
+"nascimento": "1997-11-07"
+}
+
+{
+"nomeMotorista": "Leandro Lackman",
+"email": "lackmanleandro@gmail.com",
+"senha": "TheoFofoLindo14!",
+"telefone": 981170745,
+"rgOuCpf": "85714641",
+"registroCNH": 85268741,
+"nascimento": "1977-09-14"
+}
+
+{
+"nomeMotorista": "Carolina Freitas",
+"email": "carolsoaresfreitas@gmail.com",
+"senha": "AmoPc0902@",
+"telefone": 984698372,
+"rgOuCpf": "8465521456",
+"registroCNH": 8455555,
+"nascimento": "2001-02-09"
+}
+------------------------------------------------------------------------------------------------------------
+".env" = JWT_KEY=HJS545#@kdn1674530Uhghs_CAMINHAO-C3G0NH4
+
+------------------------------------------------------------------------------------------------------------
+rota inclusão viagem:
+{
+	"descricao": "interestadual",
+	"tipoCarga": "carros",
+	"origem": "SP",
+	"destino": "DF",
+	"valorCarga": "985.000",
+	"usuario_id": 12,
+	"caminhao_id": 2
+}
+
+-----------------------------------------------------------------
+rota inclusão caminhão:
+{
+  "modelo": "Cegonha",
+  "marca": "Volvo",
+  "placa": "AHJ784",
+  "chassi": "251436781"
+}
+

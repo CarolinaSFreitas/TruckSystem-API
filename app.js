@@ -6,6 +6,7 @@ import routes from './routes.js'
 import cors from 'cors'
 import { log } from './models/Log.js'
 import { Troca } from './models/Troca.js'
+import { Viagem } from './models/Viagem.js'
 
 const app = express()
 const port = 3000
@@ -20,6 +21,9 @@ async function conecta_db() {
   try {
     await sequelize.authenticate();
     console.log('Conexão bem sucedida.');
+
+    await Viagem.sync()
+    console.log("Tabela de Viagens: Ok!")
 
     await Caminhao.sync()
     console.log("Tabela de Caminhões: Ok!")

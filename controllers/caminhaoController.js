@@ -1,14 +1,13 @@
-import { sequelize } from "../database/conecta.js"
 import { log } from "../models/Log.js";
 import { Usuario } from "../models/Usuario.js"
 import { Caminhao } from "../models/Caminhao.js"
-import { Op, Sequelize } from 'sequelize';
+import { Viagem } from "../models/Viagem.js";
 
-//função de get - vai listar os vinhos no insomnia
+//função de get - vai listar no insomnia
 export async function caminhaoIndex(req, res) {
     try {
         const caminhoes = await Caminhao.findAll({
-            include: Usuario
+            
         })
         res.status(200).json(caminhoes)
     } catch (error) {
@@ -37,18 +36,21 @@ export async function caminhaoCreate(req, res) {
 
 //função de deletar registro no insomnia
 export async function caminhaoDelete(req, res) {
-    const { id } = req.params
+    const { id } = req.params;
 
     try {
         await Caminhao.destroy({
             where: { id }
-        })
+        });
 
-        await log.create({descricao: `Exclusão de Caminhão id: ${id}`, 
-        complemento: `Usuário: ${req.usuario_logado_id} - ${red.usuario_logado_nome}`})
-    
-        res.status(200).json({ msg: "Ok! Removido com sucesso :)" })
+        await log.create({
+            descricao: `Exclusão de Caminhão id: ${id}`,
+            complemento: `Usuário: ${req.usuario_logado_id} - ${req.usuario_logado_nome}`
+        });
+
+        res.status(200).json({ msg: "Ok! Removido com sucesso :)" });
     } catch (error) {
-        res.status(400).send(error)
+        console.error("Erro ao excluir o caminhão:", error);
+        res.status(500).json({ erro: "Erro interno do servidor ao excluir o caminhão" });
     }
 }

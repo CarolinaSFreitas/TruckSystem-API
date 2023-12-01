@@ -26,9 +26,6 @@ function validaSenha(senha) {
     let numeros = 0
     let simbolos = 0
 
-    // senha = "abc123"
-    // letra = "a"
-    // percorre as letras da variável senha
 
     for (const letra of senha) {
 
@@ -76,6 +73,7 @@ export async function usuarioCreate(req, res) {
     }
 }
 
+//TESTAR A ROTA DE TROCA DE SENHA DO USUARIO!!!!
 export async function usuarioTrocaSenha(req, res) {
     const { hash } = req.params
     const { email, novasenha } = req.body
