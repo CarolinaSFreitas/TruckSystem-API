@@ -109,7 +109,7 @@ export async function viagemPesquisa(req, res) {
             include: [
                 {
                     model: Usuario,
-                    attributes: ['nomeMotorista'],
+                    attributes: ['nomeMotorista', 'email', 'telefone', 'registroCNH'],
                 },
                 {
                     model: Caminhao,
