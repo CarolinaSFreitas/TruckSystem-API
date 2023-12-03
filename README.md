@@ -123,4 +123,22 @@ export async function loginUsuario(req, res) {
 
 ![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/f5199705-217f-4119-b00b-bc68a9dacb14)
 
+**3. Implementar um controle de tentativas de acesso inválidas para o usuário. Desta forma, ao atingir, por 
+exemplo, 3 tentativas inválidas bloqueia o usuário (não permite novos acessos até ser retirado o 
+bloqueio).**
+
+Nesse recurso, o usuário tem seus acessos bloqueados após 3 tentativas de login inválidas e isso é registrado no banco de dados:
+![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/33b74294-12c7-4106-a3f0-cae8512c08c7)
+
+![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/85930c09-964c-454c-bd37-0944afd44fc1)
+
+Como sugerido na mensagem de erro, o usuário deve solicitar o desbloqueio de conta e após isso trocar a senha e, assim, executar o login novamente. Então:
+- O desbloqueio de usuário é feito na rota `` http://localhost:3000/usuario/desbloquear/:id ``
+  ![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/5854fa5b-6757-4d6a-91ec-06a92f8f7294)
+- Após isso ele deve trocar de senha e tentar logar novamente com a nova senha (além de que o valor de tentativas de login no banco é alterado para 0):
+  ![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/c18aff2d-661a-4226-a943-8e04c1231a7e)
+
+  ![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/23dbf324-64ab-49e3-ac99-7f0e1fbb6e8a)
+
+
 
