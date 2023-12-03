@@ -4,28 +4,27 @@ import { Usuario } from "../models/Usuario.js";
 import { Troca } from "../models/Troca.js";
 
 // async..await is not allowed in global scope, must use a wrapper
-async function main(nome, email, hash) {
+async function main(nomeMotorista, email, hash) {
 
-    const transporter = nodemailer.createTransport({
+    var transporter = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
-        port: 465,
-        secure: false,
+        port: 2525,
         auth: {
-            user: "72de88ddb16c79",
-            pass: "eeaaff247b1c55"
+          user: "72de88ddb16c79",
+          pass: "eeaaff247b1c55"
         }
-    });
+      });
 
-    const link = "http://localhost:3000/usuarios/trocasenha/" + hash
+    const link = "http://localhost:3000/usuario/trocasenha/" + hash
 
     let mensa = "<h4>TruckSystem</h4>"
-    mensa += `<h5>Estimado Usuário: ${nome}</h5>`
+    mensa += `<h5>Estimado Usuário: ${nomeMotorista}</h5>`
     mensa += "<h5>Você solicitou a troca de senha</h5>"
     mensa += `<a href="${link}">Alterar a senha</a>`
 
     // send mail with defined transport object
     const info = await transporter.sendMail({
-        from: '"TruckSystem 🚚" <trucksystem@example.com>', // sender address
+        from: '"TruckSystem 🚚" <trucksystem@trucks.com>', // sender address
         to: email, // list of receivers
         subject: "Troca de Senha", // Subject line
         text: `Copie e cole o link ${link} para alterar a senha`, // plain text body
@@ -46,9 +45,9 @@ export async function enviaEmail(req, res) {
             return
         }
 
-        const hash = md5(usuario.nome + email + Date.now())
+        const hash = md5(usuario.nomeMotorista + email + Date.now())
 
-        main(usuario.nome, email, hash).catch(console.error)
+        main(usuario.nomeMotorista, email, hash).catch(console.error)
 
         await Troca.create({email, hash})
 

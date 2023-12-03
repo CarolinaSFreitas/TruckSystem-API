@@ -1,7 +1,6 @@
 import { log } from "../models/Log.js";
 import { Caminhao } from "../models/Caminhao.js"
 
-
 //função de get - vai listar no insomnia
 export async function caminhaoIndex(req, res) {
     try {

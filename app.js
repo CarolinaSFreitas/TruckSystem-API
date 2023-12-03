@@ -28,7 +28,7 @@ async function conecta_db() {
     await Caminhao.sync()
     console.log("Tabela de Caminhões: Ok!")
 
-    await Usuario.sync()
+    await Usuario.sync({alter: true})
     console.log("Tabela de Usuários Motoristas: Ok!")
 
     await log.sync()
@@ -55,7 +55,7 @@ app.get('/', (req, res) => {
       <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="./truck.jpg" type="image/x-icon" />
+      <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
       <title>API TruckSystem</title>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');

@@ -52,7 +52,7 @@ function validaSenha(senha) {
 export async function usuarioCreate(req, res) {
     const { nomeMotorista, email, senha, telefone, rgOuCpf, registroCNH, nascimento } = req.body
 
-    if (!nomeMotorista || !email || !senha|| !telefone || !rgOuCpf || !registroCNH || !nascimento) {
+    if (!nomeMotorista || !email || !senha || !telefone || !rgOuCpf || !registroCNH || !nascimento) {
         res.status(400).json("Erro... Informe nome, email e senha.")
         return
     }
@@ -64,6 +64,13 @@ export async function usuarioCreate(req, res) {
     }
 
     try {
+        //verifica se ja tem email cadastrado no sistema
+        const usuarioExistente = await Usuario.findOne({ where: { email } });
+
+        if (usuarioExistente) {
+            res.status(400).json({ erro: "E-mail já está em uso. Escolha outro e-mail." });
+            return;
+        }
         const usuario = await Usuario.create({
             nomeMotorista, email, senha, telefone, rgOuCpf, registroCNH, nascimento
         })
@@ -73,39 +80,62 @@ export async function usuarioCreate(req, res) {
     }
 }
 
-//TESTAR A ROTA DE TROCA DE SENHA DO USUARIO!!!!
+//ROTA DE TROCA DE SENHA DO USUARIO!!!!
 export async function usuarioTrocaSenha(req, res) {
-    const { hash } = req.params
-    const { email, novasenha } = req.body
+    const { hash } = req.params;
+    const { email, novasenha } = req.body;
 
     if (!email || !novasenha) {
-        res.status(400).json("Erro... Informe nome, email e senha.")
-        return
+        res.status(400).json("Erro... Informe email e a nova senha do usuário");
+        return;
     }
 
-    const mensagem = validaSenha(novasenha)
+    const troca = await Troca.findOne({ where: { email, hash } });
+
+    if (troca == null) {
+        res.status(400).json({ msg: "Erro... Verifique seu e-mail ou os dados enviados" });
+        return;
+    }
+
+    const mensagem = validaSenha(novasenha);
     if (mensagem.length > 0) {
-        res.status(400).json({ erro: mensagem.join(', ') })
-        return
+        res.status(400).json({ erro: mensagem.join(', ') });
+        return;
     }
 
     try {
-
-        const solicitacao = await Troca.findOne({ where: { hash, email } })
-
-        if (solicitacao == null) {
-            res.status(400).json({ erro: "Não foi possível trocar a senha." })
-            return
-        }
-
-        Usuario.update({
+        await Usuario.update({
             senha: novasenha
-        }, { 
-           where: { email },
-           individualHooks: true
-        })
-        res.status(200).json({ msg: "OK! Troca de senha realizada com sucesso :)" })
+        }, {
+            where: { email },
+            individualHooks: true
+        });
+
+        res.status(200).json({ msg: 'Ok! Senha alterada com sucesso! :)' });
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error);
     }
 }
+
+//desbloquear usuário por ID (depois de ser bloqueado por logins inválidos 3x)
+export async function usuarioDesblock(req, res) {
+    const userId = req.params.id;
+
+    try {
+        const usuario = await Usuario.findByPk(userId);
+
+        if (!usuario) {
+            res.status(404).json({ erro: 'Usuário não encontrado' });
+            return;
+        }
+
+        usuario.bloqueado = false;
+        usuario.tentativas_login = 0; 
+        await usuario.save();
+
+        res.status(200).json({ msg: 'Usuário desbloqueado com sucesso' });
+    } catch (error) {
+        res.status(500).json({ erro: 'Erro ao desbloquear o usuário' });
+    }
+}
+

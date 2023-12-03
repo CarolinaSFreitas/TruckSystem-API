@@ -9,20 +9,25 @@ import { Op, Sequelize } from 'sequelize';
 export async function viagensIndex(req, res) {
     try {
         const viagens = await Viagem.findAll({
-            include: 
-            [
-                {
-                    model: Usuario,
-                   
-                    attributes: ['nomeMotorista', 'telefone', 'registroCNH'],
-                },
-                {
-                    model: Caminhao, 
-                    attributes: ['modelo', 'marca', 'placa'],
-                },
-            ],
+            include:
+                [
+                    {
+                        model: Usuario,
+
+                        attributes: ['nomeMotorista', 'telefone', 'registroCNH'],
+                    },
+                    {
+                        model: Caminhao,
+                        attributes: ['modelo', 'marca', 'placa'],
+                    },
+                ],
         });
-    
+
+        await log.create({
+            descricao: "Listagem de Viagens",
+            complemento: `Usuário: ${req.usuario_logado_id} - ${req.usuario_logado_nome}`
+        });
+
         res.status(200).json(viagens)
     } catch (error) {
         res.status(400).send(error)

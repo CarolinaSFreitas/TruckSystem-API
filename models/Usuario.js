@@ -38,6 +38,10 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
         type: DataTypes.DATE,
         allowNull: false
     },
+    tentativas_login:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 }, {
     tableName: 'usuario',
     timestamps: false,
