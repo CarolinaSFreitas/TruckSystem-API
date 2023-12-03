@@ -146,6 +146,16 @@ rota inclusão viagem:
 	"caminhao_id": 2
 }
 
+{
+	"descricao": "interestadual",
+	"tipoCarga": "motos colecionáveis",
+	"origem": "SP",
+	"destino": "MA",
+	"valorCarga": "915.000",
+	"usuario_id": 10,
+	"caminhao_id": 12
+}
+
 -----------------------------------------------------------------
 rota inclusão caminhão:
 {
