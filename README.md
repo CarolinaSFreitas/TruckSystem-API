@@ -71,4 +71,56 @@ export async function usuarioCreate(req, res) {
 Saída no Insomnia: 
 ![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/95fb283a-81d1-4ebc-acdb-e649deaf0c76)
 
+**5. Registrar data/hora do último login do usuário. Exibir essa data/hora no login (“Bem-vindo ... Seu último 
+acesso ao sistema foi ...”)**
+
+````
+
+export async function loginUsuario(req, res) {
+    const { email, senha } = req.body;
+    const mensaErroPadrao = "Erro... Login ou Senha Inválidos";
+
+    if (!email || !senha) {
+        res.status(400).json({ erro: mensaErroPadrao });
+        return;
+    }
+
+    try {
+        const usuario = await Usuario.findOne({ where: { email } });
+
+        await log.create({
+            descricao: `Tentativa de Login Inválida`,
+            complemento: `Nome: ${usuario ? usuario.nomeMotorista : 'Usuário Desconhecido'}, E-mail: ${email}`
+        });
+
+        if (!usuario || !bcrypt.compareSync(senha, usuario.senha)) {
+            res.status(400).json({ erro: mensaErroPadrao });
+            return;
+        }
+
+        await Usuario.update({ ultimo_login: new Date() }, { where: { id: usuario.id } });
+
+        const token = jwt.sign({
+            usuario_logado_id: usuario.id,
+            usuario_logado_nome: usuario.nomeMotorista
+        }, process.env.JWT_KEY, { expiresIn: "1h" });
+
+        await log.create({
+            descricao: `Tentativa de Login Bem-sucedida`,
+            complemento: `Nome: ${usuario.nomeMotorista}, E-mail: ${email}`
+        });
+
+        res.status(200).json({
+            msg: `Bem-vindo ${usuario.nomeMotorista}! Seu último acesso ao sistema foi em ${new Date().toLocaleString()}.`,
+            token
+        });
+
+    } catch (error) {
+        res.status(400).json({ erro: 'Erro interno no servidor...' });
+    }
+}
+````
+
+![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/f5199705-217f-4119-b00b-bc68a9dacb14)
+
 
