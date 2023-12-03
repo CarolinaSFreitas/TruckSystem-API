@@ -65,7 +65,7 @@ export async function loginUsuario(req, res) {
         });
 
         res.status(200).json({
-            msg: `Bem-vindo ${usuario.nomeMotorista}! Seu último acesso ao sistema foi em ${usuario.ultimo_login.toLocaleString()}.`,
+            msg: `Bem-vindo(a) ${usuario.nomeMotorista}! Seu último acesso ao sistema foi em ${usuario.ultimo_login.toLocaleString()}.`,
             token
         });
 
