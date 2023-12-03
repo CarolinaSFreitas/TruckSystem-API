@@ -39,8 +39,7 @@ export const Usuario = sequelize.define('usuario', { // nome da tabela
         allowNull: false
     },
     tentativas_login:{
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.INTEGER(9)
     }
 }, {
     tableName: 'usuario',
