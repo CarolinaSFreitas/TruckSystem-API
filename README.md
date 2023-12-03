@@ -22,4 +22,13 @@ Trabalho #3 de Desenvolvimento de APIs - Entrega: 08/12/23
 ### Acesso Localhost: 
 - ``http://localhost:3000/``
 
+## Logs nas rotas que tem o middleware:
+
+Na rota de deletar um caminhão registrado no sistema, ele verifica quem está fazendo (através do "Bearer TOKEN_JWT") e traz esse registro para a tabela "Logs" do banco de dados:
+
+- A exclusão sendo feita com sucesso:
+![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/88268605-364c-48a6-8dec-aad628fc9920)
+
+- O registro nos Logs:
+![image](https://github.com/CarolinaSFreitas/TruckSystem-API/assets/99994934/679b4db3-e56b-4c8a-9f17-3d1ad2dd74b2)
 
