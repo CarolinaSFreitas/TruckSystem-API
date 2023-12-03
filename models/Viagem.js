@@ -36,10 +36,10 @@ export const Viagem = sequelize.define('viagem', { // nome da tabela
     paranoid: true
 });
 
-// Relacionamento entre Viagem, Usuario (motorista) e Caminhão
+
 Viagem.belongsTo(Usuario, {
     foreignKey: {
-        name: 'usuario_id', // Nome da coluna na tabela de Viagem que referencia o motorista
+        name: 'usuario_id', 
         allowNull: false,    
         unique: false,      
     },
@@ -50,8 +50,6 @@ Usuario.hasMany(Viagem, {
     foreignKey: "usuario_id"
 })
 
-
-// Relacionamento entre Viagem e Caminhao
 Viagem.belongsTo(Caminhao, {
     foreignKey: {
         name: 'caminhao_id', 
