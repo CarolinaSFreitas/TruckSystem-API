@@ -105,7 +105,7 @@ export async function viagemUpdate(req, res) {
 
 
 ///função de pesquisa na tabela viagem
-// étodo de filtro que o tipo contenha a string passada como parametro 
+//método de filtro que o tipo contenha a string passada como parametro 
 export async function viagemPesquisa(req, res) {
     const { termo } = req.params;
 

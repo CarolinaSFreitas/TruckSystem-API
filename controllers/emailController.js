@@ -8,7 +8,7 @@ async function main(nomeMotorista, email, hash) {
 
     var transporter = nodemailer.createTransport({
         host: "sandbox.smtp.mailtrap.io",
-        port: 2525,
+        port: 2525,             //trocar essa porta para 456 no senac
         auth: {
           user: "72de88ddb16c79",
           pass: "eeaaff247b1c55"
