@@ -28,7 +28,7 @@ async function conecta_db() {
     await Caminhao.sync()
     console.log("Tabela de Caminhões: Ok!")
 
-    await Usuario.sync({alter: true})
+    await Usuario.sync({ alter: true })
     console.log("Tabela de Usuários Motoristas: Ok!")
 
     await log.sync()
@@ -56,6 +56,7 @@ app.get('/', (req, res) => {
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
       <title>API TruckSystem</title>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
@@ -100,6 +101,26 @@ app.get('/', (req, res) => {
         <div class="welcome-text">Bem-vindo(a)! <br> API TruckSystem </div>
         <img src="/truck.jpg" class="center-image" width="650px">
 
+      <div class="btn d-flex justify-content-center py-5">
+       
+        <div class="m-2">
+          <a href="/viagens" target="_blank>
+            <button type="button" class="btn btn-outline-dark">Viagens</button>
+          </a>
+        </div>
+
+        <div class="m-2">
+          <a href="/usuarios" target="_blank>
+            <button type="button" class="btn btn-outline-dark">Motoristas</button>
+          </a>
+        </div>
+        
+        <div class="m-2">
+          <a href="/caminhoes" target="_blank>
+            <button type="button" class="btn btn-outline-dark">Caminhões</button>
+          </a>
+        </div>
+      </div>
       </body>
     </html>
   `);
